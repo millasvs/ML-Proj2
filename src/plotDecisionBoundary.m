@@ -1,4 +1,4 @@
-function plotDecisionBoundary(theta, X, y)
+function plotDecisionBoundary(theta, X, y, c)
 %PLOTDECISIONBOUNDARY Plots the data points X and y into a new figure with
 %the decision boundary defined by theta
 %   PLOTDECISIONBOUNDARY(theta, X,y) plots the data points with + for the 
@@ -9,26 +9,35 @@ function plotDecisionBoundary(theta, X, y)
 %   2) MxN, N>3 matrix, where the first column is all-ones
 
 % Plot Data
-plot_data(X(:,2:3), y);
+%plot_iris(X,y);
+plot_iris(X(:,2:end), y);
+y = y == c;
+
 hold on
 
 if size(X, 2) <= 3
+
+    fprintf('yo\n');
     % Only need 2 points to define a line, so choose two endpoints
-    plot_x = [min(X(:,2))-2,  max(X(:,2))+2];
+    plot_x = [min(X(:,2))-2,  max(X(:,2))+2] % min sepal l, max sepal l
 
     % Calculate the decision boundary line
-    plot_y = (-1./theta(3)).*(theta(2).*plot_x + theta(1));
-
+    plot_y = (-1./theta(3)).*(theta(2).*plot_x + theta(1)) % min och max sepal w
+    % theta(3) - korrelationskoeff sepal width
+    % theta(2) - -''- sepal length
+    % theta(1) - konstant term
+    
     % Plot, and adjust axes for better viewing
     plot(plot_x, plot_y)
     
     % Legend, specific for the exercise
-    legend('Admitted', 'Not admitted', 'Decision Boundary')
-    axis([30, 100, 30, 100])
+%    legend('Admitted', 'Not admitted', 'Decision Boundary')
+    axis([1, 7, 0, 2.5])
 else
+    fprintf('yoyoyoyo\n');
     % Here is the grid range
-    u = linspace(-1, 1.5, 50);
-    v = linspace(-1, 1.5, 50);
+    u = linspace(2, 4.5, 50); %y
+    v = linspace(4, 8, 50); %x
 
     z = zeros(length(u), length(v));
     % Evaluate z = theta*x over the grid

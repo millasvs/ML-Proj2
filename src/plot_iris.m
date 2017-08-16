@@ -2,40 +2,42 @@
 
 function plot_iris(X, y)
 
-figure; hold on;
-
 setosa = (X(y==1, :));
 virgi = (X(y==2, :));
 versi = (X(y==3, :));
 
-plot(setosa(:,1), setosa(:,2), 'k+')
-hold on
-plot(versi(:,1), versi(:,2), 'bo', 'MarkerFaceColor', 'y')
-plot(virgi(:,1), virgi(:,2), 'r+')
+figure; hold on;
 
-hold off;
+  plot(setosa(:,1), setosa(:,2), 'k+')
+  hold on
+  plot(versi(:,1), versi(:,2), 'bo', 'MarkerFaceColor', 'y')
+  plot(virgi(:,1), virgi(:,2), 'r+')
 
-% Labels and Legend
-xlabel('Sepal length (cm)')
-ylabel('Sepal width (cm)')
+  % Labels and Legend
+  xlabel('Sepal length (cm)')
+  ylabel('Sepal width (cm)')
 
-% Specified in plot order
-legend('Iris-setosa', 'Iris-versicolor', 'Iris-virginica')
+  % Specified in plot order
+  legend('Iris-setosa', 'Iris-versicolor', 'Iris-virginica')
+  hold off;
+
+  
 hold off;
 
 figure; hold on;
-plot(setosa(:,3), setosa(:,4), 'k+')
-hold on
-plot(versi(:,3), versi(:,4), 'bo', 'MarkerFaceColor', 'y')
-plot(virgi(:,3), virgi(:,4), 'r+')
 
-% Labels and Legend
-xlabel('Petal length (cm)')
-ylabel('Petal width (cm)')
+  plot(setosa(:,3), setosa(:,4), 'k+')
+  hold on
+  plot(versi(:,3), versi(:,4), 'bo', 'MarkerFaceColor', 'y')
+  plot(virgi(:,3), virgi(:,4), 'r+')
 
-% Specified in plot order
-legend('Iris-setosa', 'Iris-versicolor', 'Iris-virginica')
-hold off;
+  % Labels and Legend
+  xlabel('Petal length (cm)')
+  ylabel('Petal width (cm)')
+
+  % Specified in plot order
+  legend('Iris-setosa', 'Iris-versicolor', 'Iris-virginica')
+  hold off;
 
 hold off;
 
