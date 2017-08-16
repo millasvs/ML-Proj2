@@ -57,15 +57,15 @@ clear ; close all; clc
     prediction = sigmoid(X_test * theta)>= 0.5;
     answer = y_test == c;
     all_preds(:,c) = prediction;
-    fprintf('Training accuracy for class %s: %f\n', classes(c,:), ...
+    fprintf('Prediction accuracy for class %s: %f\n', classes(c,:), ...
     mean(double(prediction == answer)) * 100);
   end
   
   pause;
+  fprintf('Overall prediction accuracy: %f\n', mean( mean(double(all_preds == all_y)) ) * 100);
   fprintf('\n\n');
-  fprintf('Overall training accuracy: %f\n', mean( mean(double(all_preds == all_y)) ) * 100);
 
-  %% Testing the predictions on new data
+  %% Testing the predictions on some made up data
   test = [ [1 7 4 6 2] ; [1 4 2 1 0] ; [1 7.5 4 6.5 2] ; [1 6 3 4 1.5] ;
   [1 6 3 4 1.5]];
 
@@ -81,7 +81,3 @@ clear ; close all; clc
 %TODO: plot decision boundary?
     % plot boundary between classes - hard to do when there are more
     % features than two
-%    plotDecisionBoundary(theta, X, y);
-%    hold on;
-%    title(sprintf('lambda = %g', lambda))
-%    hold off;
